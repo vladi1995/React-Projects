@@ -10,6 +10,16 @@ function App() {
     setUser(data[index]);
   }, [index]);
 
+  
+  useEffect(() => {
+    let slider = setInterval(() => {
+      nextUser();
+    }, 5000);
+    return () => {
+      clearInterval(slider);
+    };
+  }, [index]);
+
   const prevUser = () => {
     if (index <= 0) {
       setIndex(data.length - 1);
@@ -25,10 +35,6 @@ function App() {
       setIndex(index + 1);
     }
   }
-
-  setTimeout(() => {
-    // nextUser();
-  }, 5000);
 
   return (
     <>
