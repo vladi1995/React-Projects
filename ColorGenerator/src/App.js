@@ -12,7 +12,7 @@ function App() {
     setColor(e.target.value);
     setError(false);
     colorCheck(color);
-  }
+  };
 
   const submitColor = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function App() {
     } catch (error) {
       setError(true);
     }
-  }
+  };
 
   const colorCheck = (color) => {
     if (!color.startsWith('#')) {
@@ -33,7 +33,7 @@ function App() {
     } else {
       setError(false);
     }
-  }
+  };
 
   return (
     <>
