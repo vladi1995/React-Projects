@@ -6,7 +6,7 @@ import Values from 'values.js'
 function App() {
   const [color, setColor] = useState('');
   const [error, setError] = useState(false);
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState(new Values('#f15025').all(10));
 
   const onColorChange = (e) => {
     setColor(e.target.value);
@@ -16,9 +16,13 @@ function App() {
 
   const submitColor = (e) => {
     e.preventDefault();
-    let newValues = new Values(color).all(10);
-    setColors(newValues);
-    console.log(colors);
+    try {
+      let newValues = new Values(color).all(10);
+      setColors(newValues);
+      colorCheck(color);
+    } catch (error) {
+      setError(true);
+    }
   }
 
   const colorCheck = (color) => {
@@ -41,9 +45,9 @@ function App() {
         </form>
 
       </section>
-      <div className="colors">
-        {colors.map((eachColor, index) => <SingleColor key={index} color={eachColor} />)}
-      </div>
+      <section className="colors">
+        {colors.map((eachColor, index) => <SingleColor key={index} color={eachColor} index={index} />)}
+      </section>
     </>
   );
 }
