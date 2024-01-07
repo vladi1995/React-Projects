@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
-import Modal from './Modal';
 import { useGlobalContext } from './context';
 
 const Home = () => {
